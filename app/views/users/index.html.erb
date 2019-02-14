@@ -10,6 +10,9 @@
             <li> <%= link_to gravitar_for(user),user_path(user) %> </li>
             <li class="article-title"> <%= link_to user.username,user_path(user) %>  </li>
             <li> <small> <%= pluralize(user.articles.count,'article') %> </small> </li>
+            <% if logged_in? && current_user.is_admin? %>
+               <li> <%= link_to 'Delete',user_path(user),method: :delete ,data: {confirm: "Are you sure ?" }, class: "btn btn-xs btn-danger" %> </li>
+            <% end %>
         </div>
      </div>
     </ul>
